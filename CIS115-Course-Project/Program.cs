@@ -9,79 +9,76 @@ namespace CIS115CourseProject
     {
         public static void Main(string[] args)
         {
-            Random random = new Random((int)DateTime.Now.Ticks);
+            string guessWord = "roman";
+            string wordIsUpperCase = guessWord.ToUpper();
 
-            string[] wordBank = { "Blue", "Black", "Yellow", "Orange", "Green", "Purple" };
+            // set the builder to display how many letter are there
+            StringBuilder displayUser = new StringBuilder(guessWord.Length);
+            for (int i = 0; i < guessWord.Length; i++)
+            {
+                displayUser.Append('_');
+            }
 
-            string wordToGuess = wordBank[random.Next(0, wordBank.Length)];
-            string wordToGuessUppercase = wordToGuess.ToUpper();
-
-            StringBuilder displayToPlayer = new StringBuilder(wordToGuess.Length);
-            for (int i = 0; i < wordToGuess.Length; i++)
-                displayToPlayer.Append('_');
-
+            // set if the workd correct or not
             List<char> correctGuesses = new List<char>();
             List<char> incorrectGuesses = new List<char>();
 
-            int lives = 5;
-            bool won = false;
+            // set the variables
+            int setLives = 5;
+            bool setCondition = false;
             int lettersRevealed = 0;
 
-            string input;
-            char guess;
+            string setInput;
+            char setGuess;
 
-            while (!won && lives > 0)
+            while (!setCondition && setLives > 0)
             {
-                Console.Write("Guess a letter: ");
+                Console.Write("Enter the letter please: ");
 
-                input = Console.ReadLine().ToUpper();
-                guess = input[0];
+                setInput = Console.ReadLine().ToUpper();
+                setGuess = setInput[0];
 
-                if (correctGuesses.Contains(guess))
+                if (correctGuesses.Contains(setGuess))
                 {
-                    Console.WriteLine("You've already tried '{0}', and it was correct!", guess);
+                    Console.WriteLine("You used this letter and it's was correct: '{0}'!", setGuess);
                     continue;
                 }
-                else if (incorrectGuesses.Contains(guess))
+                else if (incorrectGuesses.Contains(setGuess))
                 {
-                    Console.WriteLine("You've already tried '{0}', and it was wrong!", guess);
+                    Console.WriteLine("You used this letter and it's was incorrect: '{0}'!", setGuess);
                     continue;
                 }
 
-                if (wordToGuessUppercase.Contains(guess))
+                if (wordIsUpperCase.Contains(setGuess))
                 {
-                    correctGuesses.Add(guess);
+                    correctGuesses.Add(setGuess);
 
-                    for (int i = 0; i < wordToGuess.Length; i++)
+                    for (int i = 0; i < guessWord.Length; i++)
                     {
-                        if (wordToGuessUppercase[i] == guess)
+                        if (wordIsUpperCase[i] == setGuess)
                         {
-                            displayToPlayer[i] = wordToGuess[i];
+                            displayUser[i] = guessWord[i];
                             lettersRevealed++;
                         }
                     }
 
-                    if (lettersRevealed == wordToGuess.Length)
-                        won = true;
+                    setCondition |= lettersRevealed == guessWord.Length;
                 }
                 else
                 {
-                    incorrectGuesses.Add(guess);
+                    incorrectGuesses.Add(setGuess);
 
-                    Console.WriteLine("Nope, there's no '{0}' in it!", guess);
-                    lives--;
+                    Console.WriteLine("Nope, there's no '{0}' in it!", setGuess);
+                    setLives--;
                 }
 
-                Console.WriteLine(displayToPlayer.ToString());
+                Console.WriteLine(displayUser.ToString());
             }
 
-            if (won)
-                Console.WriteLine("You won!");
+            if (setCondition)
+                Console.WriteLine("Congratilations! You have figure out the word! Your score is: " + setLives);
             else
-                Console.WriteLine("You lost! It was '{0}'", wordToGuess);
-
-            Console.Write("Press ENTER to exit...");
-            Console.ReadLine();
+                Console.WriteLine("You lost! It was '{0}'", guessWord);
         }
     }
 }

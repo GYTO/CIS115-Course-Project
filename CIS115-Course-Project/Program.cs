@@ -27,10 +27,10 @@ namespace CIS115CourseProject
             int setLives = 5;
             bool setCondition = false;
             int lettersRevealed = 0;
-
             string setInput;
             char setGuess;
 
+            // loop until User guess the word
             while (!setCondition && setLives > 0)
             {
                 Console.Write("Enter the letter please: ");
@@ -38,6 +38,7 @@ namespace CIS115CourseProject
                 setInput = Console.ReadLine().ToUpper();
                 setGuess = setInput[0];
 
+                // if letter was used more then one 
                 if (correctGuesses.Contains(setGuess))
                 {
                     Console.WriteLine("You used this letter and it's was correct: '{0}'!", setGuess);
@@ -49,6 +50,7 @@ namespace CIS115CourseProject
                     continue;
                 }
 
+                // check if the word case is right, in case, if user set uppercase
                 if (wordIsUpperCase.Contains(setGuess))
                 {
                     correctGuesses.Add(setGuess);
@@ -74,11 +76,15 @@ namespace CIS115CourseProject
 
                 Console.WriteLine(displayUser.ToString());
             }
-
+            // set condition of true or false if user win or lost
             if (setCondition)
+            {
                 Console.WriteLine("Congratilations! You have figure out the word! Your score is: " + setLives);
-            else
-                Console.WriteLine("You lost! It was '{0}'", guessWord);
+            }
+            else 
+            {
+                Console.WriteLine("You lost! It was '{0}'", guessWord); 
+            } 
         }
     }
 }

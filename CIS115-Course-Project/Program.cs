@@ -30,10 +30,12 @@ namespace CIS115CourseProject
             string setInput;
             char setGuess;
 
+            Console.Write("Welcome to HangMan! \n");
+            Console.Write("You have " + setLives + " lives for this game \n");
+
             // loop until User guess the word
             while (!setCondition && setLives > 0)
             {
-                Console.Write("You have " + setLives + " lives");
                 Console.Write("Please enter the letter please: ");
 
                 setInput = Console.ReadLine().ToUpper();

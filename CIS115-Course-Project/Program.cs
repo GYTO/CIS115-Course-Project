@@ -33,7 +33,8 @@ namespace CIS115CourseProject
             // loop until User guess the word
             while (!setCondition && setLives > 0)
             {
-                Console.Write("Enter the letter please: ");
+                Console.Write("You have " + setLives + " lives");
+                Console.Write("Please enter the letter please: ");
 
                 setInput = Console.ReadLine().ToUpper();
                 setGuess = setInput[0];
@@ -64,6 +65,9 @@ namespace CIS115CourseProject
                         }
                     }
 
+                    Console.WriteLine("Good job, we have this letter '{0}'", setGuess);
+                    Console.WriteLine("You have " + setLives + " lives");
+
                     setCondition |= lettersRevealed == guessWord.Length;
                 }
                 else
@@ -72,6 +76,8 @@ namespace CIS115CourseProject
 
                     Console.WriteLine("Nope, there's no '{0}' in it!", setGuess);
                     setLives--;
+
+                    Console.WriteLine("You have " + setLives + " lives left");
                 }
 
                 Console.WriteLine(displayUser.ToString());

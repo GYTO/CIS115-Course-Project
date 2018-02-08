@@ -9,14 +9,14 @@ namespace CIS115CourseProject
     {
         public static void Main(string[] args)
         {
-            string guessWord = "roman";
+            string guessWord = "Roman";
             string wordIsUpperCase = guessWord.ToUpper();
 
             // set the builder to display how many letter are there
             StringBuilder displayUser = new StringBuilder(guessWord.Length);
             for (int i = 0; i < guessWord.Length; i++)
             {
-                displayUser.Append('_');
+                displayUser.Append('*');
             }
 
             // set if the workd correct or not
@@ -24,7 +24,7 @@ namespace CIS115CourseProject
             List<char> incorrectGuesses = new List<char>();
 
             // set the variables
-            int setLives = 5;
+            int setLives = 10;
             bool setCondition = false;
             int lettersRevealed = 0;
             string setInput;

@@ -9,7 +9,13 @@ namespace CIS115CourseProject
     {
         public static void Main(string[] args)
         {
-            string guessWord = "Roman";
+            // set to random word
+            Random random = new Random((int)DateTime.Now.Ticks);
+
+            // set words to guess
+            string[] wordBank = { "Roman", "Student", "DeVry" };
+
+            string guessWord = wordBank[random.Next(0, wordBank.Length)];
             string wordIsUpperCase = guessWord.ToUpper();
 
             // set the builder to display how many letter are there

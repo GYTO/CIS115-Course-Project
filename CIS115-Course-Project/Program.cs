@@ -13,7 +13,7 @@ namespace CIS115CourseProject
             Random random = new Random((int)DateTime.Now.Ticks);
 
             // set words to guess
-            string[] wordBank = { "Roman", "Student", "DeVry" };
+            string[] wordBank = { "Roman", "Student", "DeVry", "Course", "Project"};
 
             string guessWord = wordBank[random.Next(0, wordBank.Length)];
             string wordIsUpperCase = guessWord.ToUpper();
